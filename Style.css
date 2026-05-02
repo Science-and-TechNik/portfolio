@@ -1592,3 +1592,89 @@ span {
         flex-direction: column;
     }
 }
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow effect */
+.profile-card::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(120deg, transparent, #00f7ff, transparent);
+  top: -50%;
+  left: -50%;
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.profile-card:hover::before {
+  opacity: 0.6;
+  animation: glowMove 2s linear infinite;
+}
+
+@keyframes glowMove {
+  0% { transform: rotate(25deg) translateX(-100%); }
+  100% { transform: rotate(25deg) translateX(100%); }
+}
+
+/* Hover lift */
+.profile-card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Profile Image */
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #00f7ff;
+  box-shadow: 0 0 15px #00f7ff;
+  transition: 0.4s;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+/* Image hover zoom */
+.profile-card:hover .profile-image img {
+  transform: scale(1.1);
+}
+
+/* Info */
+.profile-info h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.profile-info p {
+  margin: 2px 0;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.profile-info span {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Text glow on hover */
+.profile-card:hover h3 {
+  color: #00f7ff;
+}
